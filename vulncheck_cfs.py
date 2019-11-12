@@ -8,11 +8,16 @@ Created on Thu Nov  8 15:32:46 2019
 import csv
 from netmiko import Netmiko
 import util
+import sys
+orig_stdout = sys.stdout
+sys.stdout = open('VUL0065238_vulncheck_results.txt', 'w')
 #util.py located on ns python github
 
 #prompt user for source and destination file
 sourcefile = 'nxos.csv'
 print ()
+print ("TVM VULNERABILITY VERIFICATION IN PROCESS")
+print ("BEGINNING CHECK FOR ACTIVE CISCO FABRIC SERVICE DISTRIBUTION")
 print ("-- Working on CSV File -- ")
 #open CSV file and generate list
 with open(sourcefile, 'r') as f:
@@ -39,13 +44,14 @@ try:
             router = util.CiscoDeviceRO(host=dev)
             net_connect = Netmiko(**router.__dict__)
             ver = net_connect.send_command('show version')
+            hostname = net_connect.send_command('show hostname')
         except:
             print ("*" + dev + "*")
             print ("--could not connect to device or run show version")
             net_connect.disconnect()
         try: 
             if "NX-OS" in ver:
-                print (dev)
+                print (hostname)
                 print ("nxos device")
                 """
                 Check the CFS service for either CFSoE or CFSoIP
@@ -58,7 +64,8 @@ try:
 #                    print (showcfs)
                     if "distribute" in showcfs:                        
                         print ("***VULNERABLE CONFIGURATION FOUND***")
-                        print (showcfs)
+                        show_cfs_status = net_connect.send_command('show cfs status')
+                        print (show_cfs_status)
                         print()
                     else:
                         print ("config ok (not vulnerable)")
@@ -85,3 +92,5 @@ finally:
     net_connect.disconnect()
     devlist = []
     devlist1 = []
+    sys.stdout=orig_stdout
+    print ("Job Complete")  
