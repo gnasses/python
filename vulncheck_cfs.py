@@ -76,7 +76,7 @@ try:
                     print()
                     net_connect.disconnect()
                 finally:
-                    net_connect.disconnect(                    
+                    net_connect.disconnect()                    
             elif "IOS" in ver:
                 print ("ios device (not vulnerable)")
             elif "ios" in ver:
