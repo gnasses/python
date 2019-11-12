@@ -8,6 +8,7 @@ import csv
 from netmiko import Netmiko
 import util
 import sys
+orig_stdout = sys.stdout
 sys.stdout = open('vul0065517_vulncheck_results.txt', 'w')
 #util.py located on ns python github
 
@@ -93,3 +94,5 @@ finally:
     net_connect.disconnect()
     devlist = []
     devlist1 = []
+    sys.stdout=orig_stdout
+    print ("Job Complete") 
