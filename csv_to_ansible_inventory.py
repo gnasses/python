@@ -12,6 +12,8 @@ Created on Thu Nov  7 10:09:46 2019
     4. Open Excel file, filter out any servers or unwanted devices, delete all rows and columns except CI names
     5. Save as CSV
     6. Run script and enter source CSV filename and filename for Ansible inventory
+    
+    Note: This script logs in to all devices to verify NOS so it can take a LONG time to generate from a large list. 
 """
 import csv
 from netmiko import Netmiko
