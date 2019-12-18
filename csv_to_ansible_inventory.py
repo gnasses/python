@@ -51,8 +51,8 @@ Please adapt to other routers or hosts as appropriate.
 print("-- Collecting Device IP Addresses -- ") 
 
 try:
-    cisctc01ipt01 = util.CiscoDeviceRO(host="cisctc01ipt01")
-    net_connect = Netmiko(**cisctc01ipt01.__dict__)
+    ciscorouter = util.CiscoDeviceRO(host="ciscorouter)
+    net_connect = Netmiko(**ciscorouter.__dict__)
 
     for dev in devlist1:
         try:
