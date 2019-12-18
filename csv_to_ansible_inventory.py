@@ -45,7 +45,7 @@ print ("duplicates filtered")
 """
 Code below use try/except/finally blocks to be sure to close router connections and revert lists
 and also continue the loops in case the script has a problem.
-Leverages the Netmiko function, and RO automation user in the utils.py, and the CTC01IPT01 router to ping/resolve. 
+Leverages the Netmiko function, and RO automation user in the utils.py, and the "ciscorouter" router to ping/resolve. 
 Please adapt to other routers or hosts as appropriate. 
 """
 print("-- Collecting Device IP Addresses -- ") 
