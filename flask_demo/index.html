@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h2> Network Automation Demos Home </h2>
+<br>
+<br />
+<img src="/static/transform_or_die.PNG" width="500">
+<h2> TVM Operations Page</h2>
+<a href="/tvm">TVM Ops</a>
+<br>
+<br />
+<h2> TVM Reports Links </h2>
+<a href="/vuln0065517">VULN0065517</a>
+<br>
+<a href="/vuln0065238">VULN0065238</a>
+<br>
+<br />
+<br />
+<h4> Top 50 Vulnerabilities List </h4>
+<a href="/vulncount">Sorted Vulnerability List</a>
+<br />
+<br />
+<h4>Server Self-Service Network Test Demo</h4>
+<form action="/cgi-bin/servervalidation.py" method="POST">
+    <input type="text" name="content1" id="content1">
+        <input type="submit" value="Servername to test">
+</form>
+<br />
+Testing may take several minutes. <br />
+<br />
+Results of Jenkins scheduled test can be seen at the following link. 
+<br />
+<br />
+<a href="/results">Test Results</a>
+<br>
+{% endblock %}
