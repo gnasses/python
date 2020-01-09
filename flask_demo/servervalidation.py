@@ -21,7 +21,7 @@ print (now)
 print ("</br />")
 try:
     print ("<b>Basic Server/Device Network Validation Routine</b> <br />")
-    #define ELR and CTC EBR01
+    #define DC1 and DC1 Cores
     dc1core01 = util.CiscoDeviceRO(host="dc1core01")
     dc2core01 = util.CiscoDeviceRO(host="dc2core01")
     ping1 = ()
@@ -47,14 +47,14 @@ try:
     server_ip2 = ping2.splitlines()[2].split()[3][:-1]
     #print ELR Results
     print()
-    print("<b>Ping results from Elk River Network Core: </b><br />")
+    print("<b>Ping results from DC1 Core: </b><br />")
     print("  Server IP: " + server_ip1 + "<br />")
     print("  Response" + ping1.splitlines()[2].split()[-2] + "ms" + "<br />")
     print ("  " + ping1.splitlines()[-2] + "<br />")
     print ("<br />")
     #print CTC Results
     print()
-    print("<b>Ping results from Chaska Network Core: </b><br />")
+    print("<b>Ping results from DC2 Core: </b><br />")
     print("  Server IP: " + server_ip2 + "<br />")
     print("  Response" + ping2.splitlines()[2].split()[-2] + "ms" + "<br />")
     print ("  " + ping2.splitlines()[-2] + "<br />")
