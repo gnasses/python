@@ -48,7 +48,7 @@ Please adapt to other routers or hosts as appropriate.
 print("-- Collecting Device IP Addresses -- ") 
 
 try:
-    n9kswitch01 = util.CiscoDeviceRO(host="cisctc01ipt01")
+    n9kswitch01 = util.CiscoDeviceRO(host="switch01")
     net_connect = Netmiko(**cisctc01ipt01.__dict__)
 
     for dev in devlist1:
