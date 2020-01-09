@@ -23,11 +23,13 @@ title = ("Sorted Vulnerability List")
 def index():
     return render_template('index.html')
 #    return "Hello WSGI Drinkers!"
+# above simple return for testing
 
 @app.route('/results')
 def run_app():
     return render_template('results.html')
 #    return "Hello WSGI Drinkers!"
+# above simple return for testing
 
 @app.route('/vuln0065517')
 def run_app1():
@@ -50,4 +52,4 @@ def run_app4():
 
 
 if __name__ == '__main__':
-  app.run(host='172.24.3.251', debug=True)
+  app.run(host='10.1.1.1', debug=True)
