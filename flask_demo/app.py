@@ -22,7 +22,7 @@ title = ("Sorted Vulnerability List")
 @app.route('/', methods=['POST', 'GET'])
 def index():
     return render_template('index.html')
-#    return "Hello WSGI Drinkers!"
+#    return "Hello WSGI Tasters!"
 # above simple return for testing
 
 @app.route('/results')
@@ -31,13 +31,13 @@ def run_app():
 #    return "Hello WSGI Drinkers!"
 # above simple return for testing
 
-@app.route('/vuln0065517')
+@app.route('/vuln17')
 def run_app1():
-    return render_template('vuln0065517.html')
+    return render_template('vuln17.html')
     
 @app.route('/vuln0065238')
 def run_app2():
-    return render_template('vuln0065238.html')
+    return render_template('vuln38.html')
 
 @app.route('/tvm', methods=['POST', 'GET'])
 def run_app3():
