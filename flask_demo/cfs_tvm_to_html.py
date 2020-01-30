@@ -8,15 +8,15 @@ Created on Thu Nov 14 21:54:59 2019
 import csv
 from netmiko import Netmiko
 import util
+#util.py located on python github
 import sys
 import datetime
 import os.path
 save_path = 'C:/users/gnasses/AppData/Roaming/Microsoft/Windows/Templates/'
-outfile = os.path.join(save_path, "vuln0065238.html")
+outfile = os.path.join(save_path, "vuln38.html")
 orig_stdout = sys.stdout
 now = str(datetime.datetime.now())
 sys.stdout = open(outfile, 'w')
-#util.py located on ns python github
 
 #prompt user for source and destination file
 sourcefile = 'switch_vuln_devices.csv'
@@ -39,7 +39,6 @@ print ("-- Working on CSV File -- <br />")
 with open(sourcefile, 'r') as f:
     reader = csv.reader(f)
     devlist = list(reader)
-#    print (devlist)
 print ("csv file processed<br />")
 f.close()    
 
@@ -49,7 +48,6 @@ devlist1 = []
 unreachables = []
 for dev in devlist:
     dev = (str(dev)[2:-2])
-#    print (dev)
     if dev not in devlist1:
         devlist1.append(dev)   
 inv = []
