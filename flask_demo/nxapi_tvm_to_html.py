@@ -8,15 +8,15 @@ Created on Thu Nov 14 21:54:59 2019
 import csv
 from netmiko import Netmiko
 import util
+#util.py located on ns python github
 import sys
 import datetime
 import os.path
 save_path = 'C:/users/gnasses/AppData/Roaming/Microsoft/Windows/Templates/'
-outfile = os.path.join(save_path, "vuln0065517.html")
+outfile = os.path.join(save_path, "vuln17.html")
 orig_stdout = sys.stdout
 now = str(datetime.datetime.now())
 sys.stdout = open(outfile, 'w')
-#util.py located on ns python github
 
 #prompt user for source and destination file
 sourcefile = 'switch_vuln_devices.csv'
