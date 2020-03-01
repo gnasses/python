@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>ASZen Master</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1> ASZen Master </h1>
+    <h2>Management of BGP AS Numbers Private Range (64512 - 65535)</h2>
+    <h3>Current ASN Usage is {{ used }} out of 1024 Available ASNs ({{ util }} used)</h3>
+    <br />
+    <h2> Show First 5 Available Private ASNs</h2>
+    <a href="/query">Query DB for ASNs to Use</a>
+    <br />  
+    <br />
+    {% if asns|length < 1 %}
+    <h4 style="text-align: left">There are no ASNs. Import below or create one!</h4>
+    {% else %}
+    <style>
+        body, html {
+        margin: 0;
+        font-family: sans-serif;
+        }
+        .content {
+        margin: 0 auto;
+        width: 800px;
+        }
+        table, td, th {
+            text-align: center;
+            border: 1px solid black;
+        }
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+        table {
+        border-collapse: collapse;
+        width: 100%;
+        }
+        th {
+        height: 30px;
+        }
+        td {
+        text-align: center;
+        padding: 5px;
+        }
+        .form {
+        margin-top: 20px;
+        }
+        content {
+        width: 70%;
+        }
+    </style>
+    <h2>Manually Add an ASN to the Database</h2>
+        <div class="form">
+            <form action="/" method="POST">
+                <label for="number">ASN Number</label>
+                <input type="number" name="number" id="number">
+                <label for="desc">Description</label>            
+                <input type="text" name="desc" id="desc">
+                <input type="submit" value="Add ASN">
+            </form>
+        </div> 
+    <br />
+    <table>
+        <tr>
+            <th>ASN</th>
+            <th>Description</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for asn in asns %}
+            <tr>
+                <td>{{ asn.number }}</td>
+                <td>{{ asn.desc }}</td>
+                <td>{{ asn.date_created.date() }}</td>
+                <td>
+                    <a href="/delete/{{asn.number}}">Delete</a>
+                    <br>
+                    <a href="/update/{{asn.number}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% endif %}
+    <br />
+    <h2> Import Private ASNs from core devices </h2>
+    <a href="/import">Import ASNs to DB</a>
+    <br />  
+    <br />
+</div>
+{% endblock %}
