@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>WHOIS Report</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+<style>
+    body, html {
+    margin: 0;
+    font-family: sans-serif;
+    }
+    .content {
+    margin: 0 auto;
+    width: 1100px;
+    }
+    table, td, th {
+        text-align: center;
+        border: 1px solid black;
+    }
+    tr:nth-child(even) {
+    background-color: #dddddd;
+    }
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+    th {
+    height: 30px;
+    }
+    td {
+    text-align: center;
+    padding: 5px;
+    }
+    .form {
+    margin-top: 20px;
+    }
+    content {
+    width: 70%;
+    }
+</style>
+    <h1> WHOIS database and Query by IP Address</h1>
+    <h2> Use form below to add devices or use browser to search this page for an existing entry </h2>
+    <br />
+    <br />   
+    <h2>Query an IP Address and add to the database</h2>
+    <h4>This will display a single result only, click link below to see all results</h4>
+    <div class="form">
+        <form action="/" method="POST">
+            <label for="asnip">Enter IP Address</label>
+            <input type="asnip" name="asnip" id="asnip">
+            <input type="submit" value="Query and Add to DB">
+        </form>
+    </div> 
+    <br />
+    <table>
+        <tr>
+            <th>IP Address</th>
+            <th>Route Entry</th>
+            <th>AS Number</th>
+            <th>Provider</th>
+            <th>Country</th>
+        </tr>
+        {% for who in whois %}
+            <tr>
+                <td>{{ who.ip }}</td> 
+                <td>{{ who.route }}</td> 
+                <td>{{ who.as_number }}</td> 
+                <td>{{ who.provider }}</td> 
+                <td>{{ who.country }}</td> 
+            </tr>
+        {% endfor %}
+    </table>
+    <br />
+    <br />
+    <h2> Display Full Results</h2>
+    <a href="/">Refresh Page</a>
+    <br /> 
+    <br />
+    <h2 style="color:red;"> Delete ALL Results</h2>
+    <a href="/clear">THIS WILL REALLY CLEAR ALL RESULTS FROM DB!</a>
+    <br /> 
+    <br />
+</div>
+{% endblock %}
